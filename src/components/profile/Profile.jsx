@@ -3,8 +3,8 @@ import { Github, Linkedin, Mail, Instagram } from 'lucide-react';
 
 export default function Profile({ member }) {
   return (
-    <div className="w-full shrink-0 snap-center p-0.7 lg:p-2">
-      <div className="flex h-full flex-col items-center rounded-[2rem] bg-[#0a0c14] p-6 text-white shadow-inner border border-white/5">
+<div className="w-full shrink-0 snap-center p-0.7 lg:p-2">
+  <div className="flex h-full flex-col items-center rounded-[2rem] border border-slate-200 bg-white/90 p-6 text-slate-900 shadow-2xl shadow-slate-200/40 backdrop-blur-xl transition-all duration-500 dark:border-white/10 dark:bg-[#0f172a]/90 dark:text-white dark:shadow-black/40">
         
         {/* Traffic Light Dots */}
         <div className="mb-8 flex w-full items-center gap-2">
@@ -13,7 +13,7 @@ export default function Profile({ member }) {
           <span className="size-3 rounded-full bg-[#27c93f]" />
         </div>
 
-        {/* Profile Image */}
+        {/* Profile Image */} 
         <div className="relative">
           <div className="absolute inset-0 rounded-full bg-blue-500/20 blur-xl"></div>
           <img
@@ -24,18 +24,18 @@ export default function Profile({ member }) {
           />
         </div>
 
-        <h2 className="mt-6 text-3xl font-black tracking-tight">{member.name}</h2>
+        <h2 className="mt-6 text-3xl font-white tracking-tight">{member.name}</h2>
         <p className="mt-2 text-sm text-slate-400 font-medium">{member.role}</p>
 
         {/* Experience & Speciality Boxes */}
         <div className="mt-8 grid w-full gap-3 text-left">
           <div className="rounded-2xl bg-white/5 p-4 border border-white/5">
-            <p className="text-[10px] uppercase tracking-widest text-slate-500">Experience</p>
-            <p className="mt-1 text-sm font-bold text-slate-200">{member.exp}</p>
+            <p className="text-[10px] uppercase tracking-widest font-bold font-white">Experience</p>
+            <p className="mt-1 text-sm font-semi-bold text-slate-400">{member.exp}</p>
           </div>
           <div className="rounded-2xl bg-white/5 p-4 border border-white/5">
-            <p className="text-[10px] uppercase tracking-widest text-slate-500">Speciality</p>
-            <p className="mt-1 text-sm font-bold text-slate-200">{member.speciality}</p>
+            <p className="text-[10px] uppercase tracking-widest font-bold font-white">Speciality</p>
+            <p className="mt-1 text-sm font-semi-bold text-slate-400">{member.speciality}</p>
           </div>
         </div>
 

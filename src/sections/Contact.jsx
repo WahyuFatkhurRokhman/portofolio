@@ -2,7 +2,7 @@ import { Mail } from 'lucide-react'
 
 export default function Contact() {
   return (
-    <section id="contact" className="mx-auto w-full max-w-5xl px-6 py-20">
+    <section id="contact" className="mx-auto w-full max-w-5xl px-6 py-60">
       <div className="text-center">
         <p className="text-sm font-bold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-300">
           Contact

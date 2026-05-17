@@ -1,16 +1,12 @@
-// src/App.jsx
 import { useEffect, useState } from 'react'
 import { supabase } from './lib/supabase'
 
-// Mengambil Data (Hanya members, karena data lain sudah ada di dalamnya)
 import { members } from './data'
 
-// Mengambil Komponen Global dari src/components/
 import ThemeToggle, { getInitialTheme } from './components/ThemeToggle'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
-// Mengambil Section Halaman dari src/sections/
 import Hero from './sections/Hero'
 import About from './sections/About'
 import Projects from './sections/Projects'
@@ -25,9 +21,11 @@ export default function App() {
   const [activeMemberIndex, setActiveMemberIndex] = useState(0)
   const activeMember = members[activeMemberIndex]
 
-  // Deteksi dan simpan tema
+  // Deteksi dan simpan tema (Ditambah 'scroll-smooth' agar navigasi mulus)
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark')
+    // Menambahkan scroll-smooth ke tag <html> secara otomatis
+    document.documentElement.classList.add('scroll-smooth') 
     localStorage.setItem('theme', theme)
   }, [theme])
 
@@ -42,7 +40,9 @@ export default function App() {
   }, [])
 
   return (
-    <main className="min-h-screen overflow-hidden bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-white">
+    // UBAH DI SINI: Tambahkan 'pt-24' agar konten tidak tertutup Header yang melayang
+    <main className="pt-24 min-h-screen overflow-x-hidden bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-[#020617] dark:text-white">
+
       {/* Background Glow */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute left-0 top-0 h-96 w-96 rounded-full bg-indigo-500/20 blur-3xl" />
@@ -59,7 +59,7 @@ export default function App() {
         setActiveIndex={setActiveMemberIndex}
       />
       <About activeMember={activeMember} />
-      <Projects projects={activeMember.projects} />
+      <Projects activeMember={activeMember} />
       <Skills skills={activeMember.skills} />
       <Contact />
       

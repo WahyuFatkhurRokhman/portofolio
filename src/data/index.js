@@ -13,7 +13,13 @@ export const members = [
     
     // --- DATA KONTEN DINAMIS RACHMAN ---
     aboutDesc: 'Halo, saya Rachman. Saya fokus membangun antarmuka web interaktif yang modern, responsif, dan tentunya dengan memperhatikan aspek keamanan siber yang kuat untuk mencegah kerentanan sistem.',
-    skills: ['React', 'Tailwind CSS', 'CyberSecurity', 'Git', 'JavaScript'],
+    skills: [
+      { name: 'React', level: 90 },
+      { name: 'Tailwind CSS', level: 85 },
+      { name: 'CyberSecurity', level: 75 },
+      { name: 'Git', level: 80 },
+      { name: 'JavaScript', level: 85 }
+    ],
     projects: [
       {
         title: 'EqualEdu Platform UI',
@@ -41,7 +47,13 @@ export const members = [
 
     // --- DATA KONTEN DINAMIS GHEFAN ---
     aboutDesc: 'Saya Ghefan, spesialis backend yang merancang arsitektur database, REST API yang handal, dan sistem server yang scalable untuk mendukung performa aplikasi yang maksimal.',
-    skills: ['Laravel', 'MySQL', 'Node.js', 'REST API', 'PHP'],
+    skills: [
+      { name: 'Laravel', level: 85 },
+      { name: 'MySQL', level: 80 },
+      { name: 'Node.js', level: 75 },
+      { name: 'REST API', level: 80 },
+      { name: 'PHP', level: 70 }
+    ],
     projects: [
       {
         title: 'EqualEdu Backend',
@@ -69,7 +81,13 @@ export const members = [
 
     // --- DATA KONTEN DINAMIS M. RIZKY ---
     aboutDesc: 'Saya Rizky, UI/UX Designer yang berfokus pada riset pengalaman pengguna, membuat wireframe interaktif, dan merancang prototipe desain modern yang nyaman digunakan.',
-    skills: ['Figma', 'UI/UX Design', 'Prototyping', 'Wireframing', 'Adobe XD'],
+    skills: [
+      { name: 'Figma', level: 85 },
+      { name: 'UI/UX Design', level: 80 },
+      { name: 'Prototyping', level: 75 },
+      { name: 'Wireframing', level: 70 },
+      { name: 'Adobe XD', level: 65 }
+    ],
     projects: [
       {
         title: 'Tenangin Community UI',
@@ -97,7 +115,13 @@ export const members = [
 
     // --- DATA KONTEN DINAMIS RISKI P ---
     aboutDesc: 'Saya Riski P, Mobile Developer yang antusias dalam mengembangkan aplikasi mobile (Android dan iOS) yang smooth dan memiliki performa tinggi menggunakan Flutter.',
-    skills: ['Flutter', 'React Native', 'Dart', 'Mobile Dev', 'Firebase'],
+    skills: [
+      { name: 'Flutter', level: 85 },
+      { name: 'React Native', level: 80 },
+      { name: 'Dart', level: 75 },
+      { name: 'Mobile Dev', level: 80 },
+      { name: 'Firebase', level: 70 }
+    ],
     projects: [
       {
         title: 'Realtime Temperature App',
