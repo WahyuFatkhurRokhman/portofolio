@@ -7,42 +7,75 @@ export default function Projects({ activeMember }) {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
+    let ignore = false;
+  
     async function fetchGitHubRepos() {
-      const githubUrl = activeMember.github?.trim()
-          
-      if (!githubUrl) {
-        setRepos([])
-        return
+    
+      // reset repo lama
+      setRepos([]);
+    
+      // cek github tersedia
+      if (!activeMember?.github) {
+        return;
       }
-      
-      const username = githubUrl
-        .replace('https://github.com/', '')
-        .replace('http://github.com/', '')
-        .replace(/\/$/, '')
-
-      setIsLoading(true)
+    
+      setIsLoading(true);
+    
       try {
-        // 3. Tarik data dari API GitHub (Ambil 6 repo publik yang paling baru di-update)
-        const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`)
-        
-        if (response.ok) {
-          const data = await response.json()
-          setRepos(data)
-        } else {
-          console.error("Gagal mengambil data dari GitHub")
-          // Fallback: Gunakan data statis bawaan jika API GitHub limit
-          setRepos(activeMember.projects || []) 
+      
+        // ambil username github
+        const githubUrl = activeMember.github
+          .trim()
+          .replace(/\/$/, '');
+      
+        const username = githubUrl.split('/').pop();
+      
+        console.log(
+          'FETCH REPO MEMBER:',
+          activeMember.name,
+          username
+        );
+      
+        // fetch repo github member aktif
+        const response = await fetch(
+          `https://api.github.com/users/${username}/repos?sort=updated&per_page=6`
+        );
+      
+        if (!response.ok) {
+          throw new Error('GitHub API Error');
         }
+      
+        const data = await response.json();
+      
+        // hanya update state jika masih active
+        if (!ignore) {
+          setRepos(data);
+        }
+      
       } catch (error) {
-        console.error("Error fetching GitHub:", error)
-        setRepos(activeMember.projects || [])
+      
+        console.error(error);
+      
+        // fallback project lokal
+        if (!ignore) {
+          setRepos(activeMember.projects || []);
+        }
+      
       } finally {
-        setIsLoading(false)
+      
+        if (!ignore) {
+          setIsLoading(false);
+        }
       }
     }
-
-    fetchGitHubRepos()
-  }, [activeMember]) // Efek ini akan berjalan ulang setiap kali activeMember berganti (kartu digeser)
+  
+    fetchGitHubRepos();
+  
+    return () => {
+      ignore = true;
+    };
+  
+  }, [activeMember]); // Efek ini akan berjalan ulang setiap kali activeMember berganti (kartu digeser)
 
   return (
     <section id="projects" className="mx-auto min-h-screen w-full max-w-4xl px-6 py-20 flex flex-col justify-center">
